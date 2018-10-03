@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BIG NIGHT OUT</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<!--Ticketmaster/Yelp background logos-->
+<body background="">
+  <!-- //// Nav bar ///// -->
+ <!-- Top navigation -->
+<div class="topnav">
+
+  <!-- Centered link -->
+  <div class="topnav-centered">
+    <a href="feed.html" class="active">HOME</a>
+  </div>
+
+  <!-- Left-aligned links (default) -->
+  <a href="search.html">Search</a>
+
+  <!-- Right-aligned links -->
+  <div class="topnav-right">
+    <a href="index.html">Logout</a>
+  </div>
+
+</div>
+    <!-- Links to tickets/main site -->             
+       <ul class="dropdown-menu">
+        <li class="nav-item"><a style="color:black" href="https://www.ticketmaster.com/">Ticketmaster</a></li>
+        <li class="nav-item"><a style="color:black" href="http://www.yelp.com">Yelp</a></li>
+      </ul>
+    </div>
+         </ul>  
+              </li>
+  </nav>
+
+  <!-- ///jumbotron //// -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4 text-center">Easily plan your night out.</h1>
+    </div>
+  </div>
+  
+</br>
+
+  <!--containers for ticketmaster and yelp  -->
+  <div class="container text-center">
+    <div class="row">
+
+      <!--Ticket Master Form Goes Here  -->
+      <div class="col">
+        <h1>Choose a City and Date</h1>
+        <form>
+          <div class="form-group">
+            <label class="text-center">City</label>
+            <input type="text" class="form-control text-center" id="userCity" placeholder="Where You're Trying to Go">
+          </div>
+          <div class="form-group text-center">
+            <label class="text-center">Date</label>
+            <input type="date" class="form-control text-center" id="userDate">
+          </div>
+          <input type="submit" class="btn btn-info" id="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+
+      <div class="row">
+        <div class="col">
+          <!-- /////TM Results Go Here////// -->
+          <div class="container text-center" id="tm-results-div">
+            <h2>Find An Event</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th class="col" style="width:33%">Event Name</th>
+                  <th class="col" style="width:33%">Venue</th>
+                  <th class="col" style="width:33%">Ticket URL</th>
+                </tr>
+              </thead>
+              <tbody id="ticket-table" style="color: white;">
+              </tbody>
+            </table>
+          </div>
+</div>
+
+          <!-- /////yelp Results Go Here////// -->
+          <div class="col">
+          <div class="container text-center" id="yelp-results-div">
+            <h2>Search Yelp</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th class="col" style="width:33%">Restaurant Name</th>
+                  <th class="col" style="width:33%">Rating</th>
+                  <th class="col" style="width:33%">Distance</th>
+                </tr>
+              </thead>
+              <tbody id="yelp-table" style="color: white;">
+              </tbody>
+            </table>
+          </div>
+      </div>
+      </div>
+    </div>
+
+<!-- Modal small -->
+<div class="modal fade bd-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      Please make sure all fields are filled before submitting.
+      <i class="em em-woman-tipping-hand"></i>
+    </div>
+  </div>
+</div>
+
+</body>
+
+
+
+<!-- /////////// Javascript/////////// -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script src="jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script src="public/js/ajax.js"></script>
+<script src="public/js/yelp.js"></script>
+
+
+
+</html>

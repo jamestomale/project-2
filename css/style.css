@@ -1,0 +1,103 @@
+    .dropdown{
+        float: right;
+        }
+
+    body{
+        background-color: white;
+        color: rgb(255,0,0);
+        }
+
+    form{
+        border:px solid whitesmoke;
+        margin: 30px;
+        background-color: #ffffff;
+        border: 1px solid white;
+        opacity: 0.9;
+        }
+      
+    .col{
+        margin: 05px;
+        background-image: url();
+        }
+        
+      
+    .ticket-table{
+        color: white;
+        }
+          
+    .beer-table{
+        color:white;
+        }
+      
+        /* top navigation */
+    .topnav {
+        position: relative;
+        background-color: #ffffff;
+        overflow: hidden;
+    }
+
+    /* navigation bar links */
+    .topnav a {
+    float: left;
+    color: red;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    }
+
+    .topnav-centered a {
+    float: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+
+    .topnav-right {
+    float: right;
+    }
+
+    /* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+    @media screen and (max-width: 600px) {
+    .topnav a, .topnav-right {
+        float: none;
+        display: block;
+    }
+
+    .topnav-centered a {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+    }   
+
+        .container{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            top: 55%;
+            left: 55%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%) 
+        }
+
+        .title{ 
+            color: rgb(0, 0, 0);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 72px;
+            text-shadow: 4px 4px 4px #aaa;
+            text-align: center;
+            vertical-align: middle;
+            text-align: center;   
+            margin: 0;
+            position: absolute;
+            top: 40%;
+            left: 48%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%) 
+        }
+            
+    

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Chirpy!</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Moment.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+ <!-- Top navigation -->
+ <div class="topnav">
+
+    <!-- Centered link -->
+    <div class="topnav-centered">
+      <a href="feed.html" class="active">HOME</a>
+    </div>
+  
+    <!-- Left-aligned links (default) -->
+    <a href="search.html">Search</a>
+  
+    <!-- Right-aligned links -->
+    <div class="topnav-right">
+      <a href="index.html">Logout</a>
+    </div>
+  
+
+  </head>
+  <body>
+
+
+    <div class="jumbotron">
+      <h1 class="text-center">Chirpy!</h1>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <p class="cool-font">Name</p>
+          <input class="form-control" type="text" id="author" placeholder="Enter Your Name">
+          <br>
+          <p class="cool-font">Move</p>
+          <textarea class="form-control" rows="3" id="chirp-box" placeholder="Enter Chirp Here!"></textarea>
+          <button id="chirp-submit" class="btn btn-lg pull-right">Submit!</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <h2>Moves Made</h2>
+          <hr>
+          <div id="chirp-area"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
+
+<script type="text/javascript">
+$.post("/api/new", newUser) {
+    // On success, run the following code
+    .then(function() {
+
+      var row = $("<div>");
+      row.addClass("user");
+
+      row.append("<p>" + newUser.firstName + " " + newUser.lastName" made a move: </p>");
+      row.append("<p>" + newChirp.body + "</p>");
+      row.append("<p>" + newChirp.body + "</p>");
+      row.append("<p>" + newChirp.body + "</p>");
+      row.append("<p>At " + moment(newChirp.created_at).format("h:mma on dddd") + "</p>");
+
+      $("#chirp-area").prepend(row);
+
+    });
+
+  // Empty each input box by replacing the value with an empty string
+  $("#firstname").val("");
+  $("#lastName").val("");
+  $("#userEmail").val("");
+  $("#password").val("");
+});
+
+// When the page loads, grab all of our chirps
+$.get("/api/all", function(data) {
+
+  if (data.length !== 0) {
+
+    for (var i = 0; i < data.length; i++) {
+
+      var row = $("<div>");
+      row.addClass("user");
+
+      row.append("<p>" + data[i].firstName + " " + data[i].lastName" made a move: </p>");
+      row.append("<p>" + data[i].yelp + "</p>");
+      row.append("<p>" + data[i].ticket + "</p>");
+      row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
+
+      $("#chirp-area").prepend(row);
+
+    }
+
+  }
+
+});
+
+</script>

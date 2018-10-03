@@ -1,0 +1,210 @@
+<html>
+
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+
+  <style media="screen">
+    body#LoginForm {
+      background-image: url("https://hdwallsource.com/img/2014/9/blur-26347-27038-hd-wallpapers.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      padding: 10px;
+    }
+
+    .form-heading {
+      color: navy;
+      font-size: 35px;
+    }
+
+    .panel h2 {
+      color: #444444;
+      font-size: 18px;
+      margin: 0 0 8px 0;
+    }
+
+    .panel p {
+      color: #777777;
+      font-size: 14px;
+      margin-bottom: 30px;
+      line-height: 24px;
+    }
+
+    .login-form .form-control {
+      background: #f7f7f7 none repeat scroll 0 0;
+      border: 1px solid #d4d4d4;
+      border-radius: 4px;
+      font-size: 14px;
+      height: 50px;
+      line-height: 50px;
+    }
+
+    .main-div {
+      background: #ffffff none repeat scroll 0 0;
+      border-radius: 2px;
+      margin: 10px auto 30px;
+      max-width: 38%;
+      padding: 50px 70px 70px 71px;
+    }
+
+    .login-form .form-group {
+      margin-bottom: 10px;
+    }
+
+    .login-form {
+      text-align: center;
+    }
+
+    .forgot a {
+      color: #777777;
+      font-size: 14px;
+      text-decoration: underline;
+    }
+
+    .login-form .btn.btn-primary {
+      background: #f0ad4e none repeat scroll 0 0;
+      border-color: #f0ad4e;
+      color: #ffffff;
+      font-size: 14px;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      padding: 0;
+    }
+
+    .forgot {
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .botto-text {
+      color: #ffffff;
+      font-size: 14px;
+      margin: auto;
+    }
+
+    .login-form .btn.btn-primary.reset {
+      background: #ff9900 none repeat scroll 0 0;
+    }
+
+    .back {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .back a {
+      color: #444444;
+      font-size: 13px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body id="LoginForm">
+
+  <div class="container">
+    <div class="login-form">
+      <div class="main-div">
+        <div class="panel">
+          <h1 class="form-heading">The Move</h1>
+          <h2>User Login</h2>
+          <p>Please enter your email and password</p>
+        </div>
+        <div class="panel-body">
+
+              <form role="form" name="newUserForm" onsubmit="return formSubmit();">
+
+<!-- first name -->
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" class="form-control" id="firstName">
+                </div>
+<!-- last name -->
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" class="form-control" id="lastName">
+                </div>
+<!-- email -->
+                <div class="form-group">
+                  <label for="userEmail">Email</label>
+                  <input type="text" class="form-control" id="userEmail">
+                </div>
+<!-- password -->
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password">
+                </div>
+
+                <button onsubmit="return formSubmit();" type="submit" class="btn btn-primary submit" onclick="document.pressed=this.value"><a style="text-decoration: none;" href="/feed">Submit</a></button>
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+</body>
+
+</html>
+<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS LOADED FROM OUR SERVER -->
+<script type="text/javascript">
+var fs = require("fs");
+// var loginServer = require('./login_server.js');
+// In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
+// In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+// Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
+// In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
+
+$(".submit").on("click", function(event) {
+event.preventDefault();
+
+// Here we grab the form elements
+var newUser = {
+  firstName: $("#firstName").val().trim(),
+  lastName: $("#lastName").val().trim(),
+  userEmail: $("#userEmail").val().trim(),
+  password: $("#password").val().trim()
+};
+
+console.log(newUser);
+
+// This line is the magic. It"s very similar to the standard ajax function we used.
+// Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+// The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+// depending on if a tables is available or not.
+
+$.post("/api/new", newUser,
+  function formSubmit (newUser) {
+
+    // If a table is available... tell user they are booked.
+    if (newUser) {
+      return fs.readFile(__dirname + "https://www.google.com", function(err, data) {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.end(data);
+      });
+    }
+
+    // If a table is available... tell user they on the waiting list.
+    else {
+      alert("Checkmate, No Move");
+    }
+
+    // Clear the form when submitting
+    $("#firstname").val("");
+    $("#lastName").val("");
+    $("#userEmail").val("");
+    $("#password").val("");
+
+  });
+
+});
+
+</script>
